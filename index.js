@@ -1,11 +1,12 @@
 const inquirer = require("inquirer");
 const Word = require("./word.js");
 
-const maxGuesses = 8;
+const maxGuesses = 10;
 let answer;
 let lettersGuessed;
 let word;
 
+/** Add ANSI escape codes around text to indicate it should be coloured yellow. */
 function addConsoleHighlight(string) {
   return "\x1b[93m" + string + "\x1b[0m";
 }
@@ -26,7 +27,14 @@ function askToPlayAgain() {
 
 function pickWord() {
   const words = [
-    "dancing",
+    "banshee",
+    "devil",
+    "ghost",
+    "gremlin",
+    "mummy",
+    "skeleton",
+    "vampire",
+    "werewolf",
   ];
   return words[randomIntRange(0, words.length - 1)];
 }
@@ -40,6 +48,7 @@ function lose() {
   askToPlayAgain();
 }
 
+/** Generate a random integer between min and max inclusive. */
 function randomIntRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -104,5 +113,7 @@ function win() {
 
   askToPlayAgain();
 }
+
+console.log("\nThe category is " + addConsoleHighlight("Monsters") + ".");
 
 startGame();

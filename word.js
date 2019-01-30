@@ -1,5 +1,6 @@
 const Letter = require("./letter.js");
 
+/** Add ANSI escape codes around text to indicate it should be underlined. */
 function addConsoleUnderline(string) {
   return "\x1b[4m" + string + "\x1b[0m";
 }
